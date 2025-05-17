@@ -1,0 +1,81 @@
+:root {
+  --color-bg: #f1f5f9;
+  --color-card: #ffffff;
+  --color-primary: #475569;
+  --color-primary-hover: #334155;
+  --color-text: #0f172a;
+  --color-input-bg: #e2e8f0;
+  --color-border: #cbd5e1;
+}
+
+.dark-mode {
+  --color-bg: #0f172a;
+  --color-card: #1e293b;
+  --color-primary: #64748b;
+  --color-primary-hover: #94a3b8;
+  --color-text: #f1f5f9;
+  --color-input-bg: #334155;
+  --color-border: #475569;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    font-family: Arial, sans-serif;
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: var(--color-card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 25px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h2 {
+    margin: 0 0 1rem 0;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+input {
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-input-bg);
+    color: var(--color-text);
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--color-primary);
+}
+
+button {
+    padding: 0.7rem;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--color-primary-hover);
+}
