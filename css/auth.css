@@ -6,9 +6,10 @@
     --color-text: #f1f5f9;
     --color-input-bg: #334155;
     --color-border: #475569;
-  }
-  
-  .dark-mode {
+    --box-shadow: rgba(148, 163, 184, 0.2);
+}
+
+.light-mode {
     --color-bg: #f1f5f9;
     --color-card: #ffffff;
     --color-primary: #475569;
@@ -16,9 +17,10 @@
     --color-text: #0f172a;
     --color-input-bg: #e2e8f0;
     --color-border: #cbd5e1;
-  }
+    --box-shadow: rgba(15, 23, 42, 0.1);
+}
 
-.login-form{
+.login-form {
     background-image: linear-gradient(345deg, var(--color-bg), var(--color-card));
     color: var(--color-text);
     display: flex;
@@ -28,29 +30,89 @@
     min-height: 100vh;
 }
 
-.login-form form{
+.login-form form {
     background-color: var(--color-card);
     display: flex;
     width: 850px;
     padding: 30px 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 20px var(--box-shadow);
 }
 
-.authForm{
+.authForm {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 15px;
 }
 
-.welcome{
+.welcome {
     width: 50%;
+    z-index: 99;
 }
 
-.authForm div{
+.welcome h3{
+    margin-top: 10px;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+}
+
+.welcome p{
+    width: 50%;
+    font-size: 0.8em;
+}
+
+.circle1 {
+    width: 400px;
+    height: 400px;
+    background-image: linear-gradient(345deg, var(--color-bg), var(--color-card) 70%);
+    position: absolute;
+    left: -45px;
+    top: -120px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.circle2 {
+    width: 200px;
+    height: 200px;
+    background-image: linear-gradient(345deg, var(--color-bg), var(--color-card) 70%);
+    position: absolute;
+    left: -50px;
+    bottom: -60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 20px var(--box-shadow);
+}
+
+.circle3 {
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(345deg, var(--color-bg), var(--color-card) 70%);
+    position: absolute;
+    border-radius: 50%;
+    left: 220px;
+    top: 175px;
+    box-shadow: 0 2px 20px var(--box-shadow);
+}
+
+.authForm > div:first-child{
+    text-align: center;
+}
+
+.authForm > div:first-child h2{
+    margin-bottom: 5px;
+}
+
+.authForm > div:first-child span{
+    color: red;
+}
+
+.authForm div {
     position: relative;
 }
 
-.authForm div > i{
+.authForm div>i {
     position: absolute;
     color: var(--color-bg);
     left: 15px;
@@ -58,7 +120,7 @@
     transform: translateY(-50%);
 }
 
-.authForm div span{
+.authForm div span.showPassword {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -74,9 +136,11 @@
     padding: 15px 40px;
     border-radius: 8px;
     width: 100%;
+    background-color: var(--color-text);
+    color: var(--color-bg);
 }
 
-.authForm button{
+.authForm button {
     cursor: pointer;
     background-color: var(--color-primary);
     color: var(--color-text);
@@ -85,6 +149,6 @@
     transition: .2s;
 }
 
-.authForm button:hover{
+.authForm button:hover {
     background-color: var(--color-primary-hover);
 }
