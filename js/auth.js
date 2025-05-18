@@ -3,18 +3,29 @@ import { homePage } from "./homePage.js"
 export function loginPage() {
     document.body.innerHTML = /*html*/`
         <div class="login-form">
-        <form class="loginForm">
-            <h2>Login</h2>
-            <label for="login">Email or Username</label>
-            <input name="login" type="text" id="login">
-            <label for="password">Password</label>
-            <input name="password" type="password" id="password">
-            <button type="submit">Login</button>
-        </form>
+            <form class="loginForm">
+                <div class="welcome">
+                    <h3>WELCOME</h3>
+                </div>
+                <div class="authForm">
+                    <h2>Sign in</h2>  
+                    <div>
+                        <input name="login" type="text" id="login" placeholder="Email or Username">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <input name="password" type="password" id="password" placeholder="Password">
+                        <i class="fa-solid fa-lock"></i>
+                        <span class="showPassword"><i class="fa-solid fa-eye"></i></span>
+                    </div>
+                    <button type="submit">Sign in</button>
+                </div>
+            </form>
         </div>
     `
 
     login()
+    showPassword()
 }
 
 function login() {
@@ -46,5 +57,13 @@ function login() {
             return
         }
 
+    })
+}
+
+function showPassword() {
+    let showPassword = document.querySelector('.showPassword')
+
+    showPassword.addEventListener('click', () => {
+        console.log(showPassword)
     })
 }
