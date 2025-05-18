@@ -3,9 +3,7 @@ function header() {
         <header>
             <nav>
                 <a href="/" class="logo">GRAPHQL</a>
-                <div>
-                    
-                </div>
+                <a href="/">Logout</a>
             </nav>
         </header>
     `
@@ -13,6 +11,7 @@ function header() {
 
 export function homePage() {
     document.body.innerHTML = /*html*/`
+        ${header()}
         <h1>Hello Youssef</h1>
     `
 }

@@ -18,19 +18,17 @@
   --color-border: #475569;
 }
 
-body {
-    margin: 0;
-    padding: 0;
+.login-form{
     background-color: var(--color-bg);
-    font-family: Arial, sans-serif;
     color: var(--color-text);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
-form {
+.login-form form {
     background-color: var(--color-card);
     padding: 2rem;
     border-radius: 12px;
@@ -41,18 +39,18 @@ form {
     gap: 1rem;
 }
 
-h2 {
+.login-form form h2 {
     margin: 0 0 1rem 0;
     text-align: center;
     color: var(--color-primary);
 }
 
-label {
+.login-form form label {
     font-size: 0.9rem;
     margin-bottom: 0.3rem;
 }
 
-input {
+.login-form form input {
     padding: 0.6rem;
     border: 1px solid var(--color-border);
     border-radius: 6px;
@@ -61,11 +59,11 @@ input {
     outline: none;
 }
 
-input:focus {
+.login-form form input:focus {
     border-color: var(--color-primary);
 }
 
-button {
+.login-form form button {
     padding: 0.7rem;
     background-color: var(--color-primary);
     border: none;
@@ -76,6 +74,6 @@ button {
     transition: background-color 0.2s ease;
 }
 
-button:hover {
+.login-form form button:hover {
     background-color: var(--color-primary-hover);
 }

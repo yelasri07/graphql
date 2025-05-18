@@ -2,6 +2,7 @@ import { homePage } from "./homePage.js"
 
 export function loginPage() {
     document.body.innerHTML = /*html*/`
+        <div class="login-form">
         <form class="loginForm">
             <h2>Login</h2>
             <label for="login">Email or Username</label>
@@ -10,6 +11,7 @@ export function loginPage() {
             <input name="password" type="password" id="password">
             <button type="submit">Login</button>
         </form>
+        </div>
     `
 
     login()
