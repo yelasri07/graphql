@@ -1,3 +1,6 @@
+import { loginPage } from "./auth.js"
+import { fetchUserData } from "./graphqlRequest.js"
+
 function header() {
     return /*html*/`
         <header>
@@ -9,7 +12,15 @@ function header() {
     `
 }
 
-export function homePage() {
+export async function homePage() {
+    let data = await fetchUserData()
+    if (!data) {
+        loginPage()
+        return
+    }
+
+    console.log(data)
+
     document.body.innerHTML = /*html*/`
         ${header()}
         <h1>Hello Youssef</h1>

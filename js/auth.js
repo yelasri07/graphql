@@ -70,6 +70,7 @@ function login() {
 
         } catch (err) {
             console.error(err)
+            spanErr.innerHTML = err
             return
         }
 
