@@ -77,6 +77,15 @@ function login() {
     })
 }
 
+export function logout() {
+    let logoutBtn = document.querySelector('.logout')
+
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem("Token")
+        loginPage()
+    })
+}
+
 function showPassword() {
     let showPassword = document.querySelector('.showPassword')
     let password = document.querySelector('#password')

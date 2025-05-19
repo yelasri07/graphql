@@ -8,6 +8,7 @@
   --color-text: #f1f5f9;
   --color-input-bg: #334155;
   --color-border: #475569;
+  --color-accent: #22d3ee;
 }
 
 .dark-mode {
@@ -29,4 +30,50 @@
 
 body {
   background-color: var(--color-bg);
+}
+
+header {
+  background-color: var(--color-card);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+nav{
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1.7em;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.logo span{
+  color: var(--color-accent);
+}
+
+.logout{
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: var(--color-text);
+  cursor: pointer;
+  color: var(--color-bg);
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout:hover{
+  background-color: var(--color-primary-hover);
 }

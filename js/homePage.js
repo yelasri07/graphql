@@ -1,12 +1,12 @@
-import { loginPage } from "./auth.js"
+import { loginPage, logout } from "./auth.js"
 import { fetchUserData } from "./graphqlRequest.js"
 
 function header() {
     return /*html*/`
         <header>
             <nav>
-                <a href="/" class="logo">GRAPHQL</a>
-                <a href="/">Logout</a>
+                <a href="/" class="logo">GRAPH<span>QL</span></a>
+                <button class="logout">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
             </nav>
         </header>
     `
@@ -19,10 +19,16 @@ export async function homePage() {
         return
     }
 
-    console.log(data)
+    // console.log(data)
 
     document.body.innerHTML = /*html*/`
         ${header()}
-        <h1>Hello Youssef</h1>
+        <main>
+            <section class="infos">
+
+            </section>
+        </main>
     `
+
+    logout()
 }
