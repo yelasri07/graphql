@@ -18,12 +18,14 @@ export function loginPage() {
                         <h2>Sign in</h2>  
                         <span class="error"></span>
                     </div>
+                    <label for="">Email or Username :</label>
                     <div>
-                        <input name="login" type="text" id="login" placeholder="Email or Username">
+                        <input required name="login" type="text" id="login" placeholder="Email or Username">
                         <i class="fa-solid fa-user"></i>
                     </div>
+                    <label for="">Password :</label>
                     <div>
-                        <input name="password" type="password" id="password" placeholder="Password">
+                        <input required name="password" type="password" id="password" placeholder="Password">
                         <i class="fa-solid fa-lock"></i>
                         <span class="showPassword"><i class="fa-solid fa-eye"></i></span>
                     </div>

@@ -153,3 +153,21 @@
 .authForm button:hover {
     background-color: var(--color-primary-hover);
 }
+
+.authForm label{
+    margin-bottom: -10px;
+}
+
+@media (max-width: 880px) {
+    .welcome{
+        display: none;
+    }
+
+    .login-form form{
+        width: max-content;
+    }
+    
+    .authForm{
+        width: 100%;
+    }
+}
