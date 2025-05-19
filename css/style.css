@@ -28,6 +28,15 @@
   font-family: "Poppins", sans-serif;
 }
 
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: .6s;
+}
+
 body {
   background-color: var(--color-bg);
 }
@@ -76,4 +85,49 @@ nav{
 
 .logout:hover{
   background-color: var(--color-primary-hover);
+}
+
+main{
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 100px;
+}
+
+section.infos{
+  background-color: var(--color-card);
+  padding: 20px 40px;
+  border-radius: 8px;
+  color: var(--color-text);
+}
+
+
+ /* Responsive container */
+ @media (min-width: 576px) {
+  .container {
+      width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+      width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+      width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      width: 100%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+      max-width: 1320px;
+  }
 }

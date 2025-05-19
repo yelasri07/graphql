@@ -19,13 +19,15 @@ export async function homePage() {
         return
     }
 
-    // console.log(data)
+    let userAttrs = data.data.user[0].attrs
+
+    console.log(userAttrs)
 
     document.body.innerHTML = /*html*/`
         ${header()}
-        <main>
+        <main class="container">
             <section class="infos">
-
+                <h1>${userAttrs.tel}</h1>
             </section>
         </main>
     `
