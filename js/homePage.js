@@ -27,7 +27,7 @@ export async function homePage() {
         ${header()}
         <main class="container">
             <section class="infos">
-                <h1>${userAttrs.tel}</h1>
+                <h1>${userAttrs.email}</h1>
             </section>
         </main>
     `
