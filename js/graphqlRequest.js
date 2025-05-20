@@ -31,9 +31,12 @@ export async function fetchUserData() {
 
 const query = `
     query {
-        user {
-            id
-            attrs
-        }
+          user{
+        login
+        email
+        firstName
+        lastName
+        auditRatio
+    }
      }
 `

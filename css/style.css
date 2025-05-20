@@ -100,6 +100,18 @@ section.infos{
   color: var(--color-text);
 }
 
+.infos .level{
+  width: 200px;
+  height: 200px;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+
 
  /* Responsive container */
  @media (min-width: 576px) {

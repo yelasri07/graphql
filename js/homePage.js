@@ -19,15 +19,22 @@ export async function homePage() {
         return
     }
 
-    let userAttrs = data.data.user[0].attrs
+    let userInfos = data.data.user[0]
 
-    console.log(userAttrs)
+    console.log(userInfos)
 
     document.body.innerHTML = /*html*/`
         ${header()}
         <main class="container">
             <section class="infos">
-                <h1>${userAttrs.email}</h1>
+                <div class="level"><span>Level</span> 26</div>
+                <div class="profile">
+                    <h2>${userInfos.login}</h2>
+                    <h2>${userInfos.email}</h2>
+                    <h2>${userInfos.firstName}</h2>
+                    <h2>${userInfos.lastName}</h2>
+                </div>
+                <div class="xp"></div>
             </section>
         </main>
     `
