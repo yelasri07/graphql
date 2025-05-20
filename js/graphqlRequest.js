@@ -1,15 +1,6 @@
 export async function fetchUserData() {
     let token = localStorage.getItem('Token')
 
-    const query = `
-        query {
-            user {
-                id
-                attrs
-            }
-        }
-    `
-
     try {
         let response = await fetch('https://learn.zone01oujda.ma/api/graphql-engine/v1/graphql', {
             method: "POST",
@@ -37,3 +28,12 @@ export async function fetchUserData() {
         return false
     }
 }
+
+const query = `
+    query {
+        user {
+            id
+            attrs
+        }
+     }
+`
