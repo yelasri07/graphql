@@ -30,11 +30,10 @@ export async function homePage() {
                 <div class="profile">
                     <h2>${userInfos.login}</h2>
                     <h2>${userInfos.email}</h2>
-                    <h2>${userInfos.firstName}</h2>
-                    <h2>${userInfos.lastName}</h2>
+                    <h2>${userInfos.firstName} ${userInfos.lastName}</h2>
                 </div>
                 <div class="level"><span>Level</span> 26</div>
-                <div class="xp"></div>
+                <div class="xp"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
             </section>
         </main>
     `

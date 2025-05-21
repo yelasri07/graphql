@@ -100,9 +100,19 @@ section.infos {
   padding: 20px 40px;
   border-radius: 8px;
   color: var(--color-text);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
 }
 
-.infos .level {
+.infos .profile{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.infos .level,.infos .xp {
   width: 200px;
   height: 200px;
   background-color: var(--color-bg);
@@ -115,6 +125,7 @@ section.infos {
   border-bottom: 10px solid var(--color-accent);
   box-shadow: 0 2px 20px var(--box-shadow);
 }
+
 
 
 /* Responsive container */
