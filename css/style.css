@@ -101,7 +101,7 @@ section.infos {
   border-radius: 8px;
   color: var(--color-text);
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
 }
 
@@ -112,7 +112,7 @@ section.infos {
   gap: 30px;
 }
 
-.infos .level,.infos .xp {
+.infos .level,.infos .xp, .infos .ratio {
   width: 200px;
   height: 200px;
   background-color: var(--color-bg);
@@ -125,7 +125,6 @@ section.infos {
   border-bottom: 10px solid var(--color-accent);
   box-shadow: 0 2px 20px var(--box-shadow);
 }
-
 
 
 /* Responsive container */

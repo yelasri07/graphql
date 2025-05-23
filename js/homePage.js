@@ -33,7 +33,8 @@ export async function homePage() {
                     <h2>${userInfos.firstName} ${userInfos.lastName}</h2>
                 </div>
                 <div class="level"><span>Level</span> 26</div>
-                <div class="xp"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
+                <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
+                <div class="xp"><span>XP</span> 750 kb</div>
             </section>
         </main>
     `
