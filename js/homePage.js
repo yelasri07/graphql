@@ -25,9 +25,7 @@ export async function homePage() {
     let userLevel = data.data.level[0]
     let userTotalXp = data.data.xpTotal.aggregate.sum
 
-    console.log(userInfos)
-    console.log(userLevel)
-    console.log(userTotalXp)
+    console.log(data)
 
     document.body.innerHTML = /*html*/`
         ${header()}
@@ -41,6 +39,9 @@ export async function homePage() {
                 <div class="level"><span>Level</span> ${userLevel.amount}</div>
                 <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
                 <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
+            </section>
+            <section class="projects">
+                
             </section>
         </main>
     `
