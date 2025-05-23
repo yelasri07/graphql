@@ -30,13 +30,39 @@ export async function fetchUserData() {
 }
 
 const query = `
-    query {
-          user{
-        login
-        email
-        firstName
-        lastName
-        auditRatio
+    {
+   user {
+  	  login
+      email
+      firstName
+      lastName
+      auditRatio
     }
-     }
+  
+  level: transaction (where : {_and :[
+    {type : { _eq :"level"}}
+  	{path : {_like :"%module%"}}
+  ]}
+    order_by : {amount : desc} 
+    limit: 1
+  ) {
+  	type 
+    amount
+    path
+  }
+
+    xpTotal : transaction_aggregate(where : {_and :[
+    {type : { _eq :"xp"}}
+  	{event:{object:{name:{_eq:"Module"}}}}
+  	# {path : {_like :"%module%"}}
+  ]}
+    # order_by : {amount : desc} 
+  ) {
+    aggregate	{
+      sum {
+        amount
+      }
+    }
+  }
+}
 `
