@@ -93,13 +93,19 @@ main {
   min-height: 100vh;
   width: 100%;
   padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-section.infos {
+section{
   background-color: var(--color-card);
   padding: 20px 40px;
   border-radius: 8px;
   color: var(--color-text);
+}
+
+section.infos {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
@@ -124,6 +130,11 @@ section.infos {
   font-size: 2em;
   border-bottom: 10px solid var(--color-accent);
   box-shadow: 0 2px 20px var(--box-shadow);
+}
+
+.projects{
+  width: 100%;
+  height: 300px;
 }
 
 

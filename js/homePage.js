@@ -24,8 +24,9 @@ export async function homePage() {
     let userInfos = data.data.user[0]
     let userLevel = data.data.level[0]
     let userTotalXp = data.data.xpTotal.aggregate.sum
+    let projects = data.data.projects
 
-    console.log(data)
+    console.log(projects)
 
     document.body.innerHTML = /*html*/`
         ${header()}
