@@ -137,6 +137,23 @@ section.infos {
   height: 300px;
 }
 
+svg {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.line {
+  fill: none;
+  stroke: #1f77b4;
+  stroke-width: 2;
+}
+.area {
+  fill: rgba(31, 119, 180, 0.2);
+}
+.point {
+  fill: white;
+  stroke: #1f77b4;
+  stroke-width: 2;
+}
 
 /* Responsive container */
 @media (min-width: 576px) {

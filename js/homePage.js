@@ -1,5 +1,6 @@
 import { convertXPToReadable } from "../utils/convert.js"
 import { loginPage, logout } from "./auth.js"
+import { displayProjects } from "./graph.js"
 import { fetchUserData } from "./graphqlRequest.js"
 
 function header() {
@@ -42,10 +43,11 @@ export async function homePage() {
                 <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
             </section>
             <section class="projects">
-                
+                <svg id="chart" width="700" height="400"></svg>
             </section>
         </main>
     `
 
+    displayProjects()
     logout()
 }
