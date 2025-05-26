@@ -41,7 +41,7 @@ export async function homePage() {
                 <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
             </section>
             <section class="projects">
-                <svg id="chart" width="800" height="400"></svg>
+                <svg id="chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
             </section>
         </main>
     `

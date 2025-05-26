@@ -12,7 +12,7 @@ export function displayProjects(projects) {
 
   console.log(data)
 
-  const width = 800;
+  const width = 1200;
   const height = 400;
   const padding = 50;
 
@@ -58,7 +58,7 @@ export function displayProjects(projects) {
     label.setAttribute("y", y + 4);
     label.setAttribute("text-anchor", "end");
     label.setAttribute("font-size", "10");
-    label.setAttribute("font-family", "Arial, sans-serif");
+    // label.setAttribute("font-family", "Arial, sans-serif");
     label.textContent = Math.round(value);
     svg.appendChild(label);
 
@@ -67,7 +67,7 @@ export function displayProjects(projects) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    line.setAttribute("stroke", "black");
+    // line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
@@ -85,6 +85,25 @@ export function displayProjects(projects) {
     circle.setAttribute("fill", "#dc2626");
     svg.appendChild(circle);
 
+    const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    tooltip.setAttribute("id", "tooltip");
+    tooltip.setAttribute("visibility", "hidden");
+    tooltip.setAttribute("font-size", "10");
+    tooltip.setAttribute("font-family", "Arial, sans-serif");
+    tooltip.setAttribute("fill", "black");
+    svg.appendChild(tooltip);
+
+    circle.addEventListener("mouseover", () => {
+      tooltip.setAttribute("x", cx + 10);
+      tooltip.setAttribute("y", cy - 10);
+      tooltip.textContent = `${t.projectName}`;
+      tooltip.setAttribute("visibility", "visible");
+    });
+
+    circle.addEventListener("mouseout", () => {
+      tooltip.setAttribute("visibility", "hidden");
+    });
+
 
     if (i % labelInterval === 0) {
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -99,12 +118,12 @@ export function displayProjects(projects) {
     }
   });
 
-  // const points = data.map(t => `${getX(t.date)},${getY(t.amount)}`).join(" ");
-  // const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  // polyline.setAttribute("points", points);
-  // polyline.setAttribute("fill", "none");
-  // polyline.setAttribute("stroke", "#3b82f6");
-  // polyline.setAttribute("stroke-width", 2);
-  // svg.appendChild(polyline);
+  const points = data.map(t => `${getX(t.date)},${getY(t.amount)}`).join(" ");
+  const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+  polyline.setAttribute("points", points);
+  polyline.setAttribute("fill", "none");
+  polyline.setAttribute("stroke", "#333");
+  polyline.setAttribute("stroke-width", 2);
+  svg.appendChild(polyline);
 
 }
