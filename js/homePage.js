@@ -1,6 +1,6 @@
 import { convertXPToReadable } from "../utils/convert.js"
 import { loginPage, logout } from "./auth.js"
-import { displayProjects } from "./graph.js"
+import { displayProjects, displaySkills } from "./graph.js"
 import { fetchUserData } from "./graphqlRequest.js"
 
 function header() {
@@ -26,11 +26,12 @@ export async function homePage() {
     let userLevel = data.data.level[0]
     let userTotalXp = data.data.xpTotal.aggregate.sum
     let projects = data.data.projects
+    let skills = data.data.skills
 
     document.body.innerHTML = /*html*/`
         ${header()}
         <main class="container">
-            <section style="display: none;" class="infos">
+            <section  class="infos">
                 <div class="profile">
                     <h2>${userInfos.login}</h2>
                     <h2>${userInfos.email}</h2>
@@ -43,9 +44,13 @@ export async function homePage() {
             <section class="projects">
                 <svg id="chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
             </section>
+            <section class="skills">
+                <svg id="skills-chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
+            </section>
         </main>
     `
 
     displayProjects(projects)
+    displaySkills(skills)
     logout()
 }
