@@ -27,12 +27,10 @@ export async function homePage() {
     let userTotalXp = data.data.xpTotal.aggregate.sum
     let projects = data.data.projects
 
-    console.log(projects)
-
     document.body.innerHTML = /*html*/`
         ${header()}
         <main class="container">
-            <section class="infos">
+            <section style="display: none;" class="infos">
                 <div class="profile">
                     <h2>${userInfos.login}</h2>
                     <h2>${userInfos.email}</h2>
@@ -43,11 +41,11 @@ export async function homePage() {
                 <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
             </section>
             <section class="projects">
-                <svg id="chart" width="700" height="400"></svg>
+                <svg id="chart" width="800" height="400"></svg>
             </section>
         </main>
     `
 
-    displayProjects()
+    displayProjects(projects)
     logout()
 }

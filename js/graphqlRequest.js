@@ -77,6 +77,7 @@ const query = `
         
       }
     amount
+    createdAt
   }
 }
 `
