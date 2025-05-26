@@ -1,5 +1,14 @@
 export function displaySkills(skills) {
-  // console.log(skills);
+  let visitedSkill = {}
+  let filterSkills = []
+  skills.forEach(value => {
+    if (!visitedSkill[value.type]) {
+      visitedSkill[value.type] = true
+      filterSkills.push(value)
+    }
+  })
+
+  skills = filterSkills
 
   const svg = document.getElementById("skills-chart");
 
