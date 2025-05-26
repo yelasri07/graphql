@@ -1,76 +1,3 @@
-export function displaySkills(skills) {
-  let visitedSkill = {}
-  let filterSkills = []
-  skills.forEach(value => {
-    if (!visitedSkill[value.type]) {
-      visitedSkill[value.type] = true
-      filterSkills.push(value)
-    }
-  })
-
-  skills = filterSkills
-
-  const svg = document.getElementById("skills-chart");
-
-  const width = 800;
-  const height = 400;
-  const padding = 50;
-
-  const maxAmount = 100;
-  const barWidth = (width - 2 * padding) / skills.length;
-
-  const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  xAxis.setAttribute("x1", padding);
-  xAxis.setAttribute("y1", height - padding);
-  xAxis.setAttribute("x2", width - padding);
-  xAxis.setAttribute("y2", height - padding);
-  xAxis.setAttribute("stroke", "#ccc");
-  svg.appendChild(xAxis);
-
-  const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  yAxis.setAttribute("x1", padding);
-  yAxis.setAttribute("y1", padding);
-  yAxis.setAttribute("x2", padding);
-  yAxis.setAttribute("y2", height - padding);
-  yAxis.setAttribute("stroke", "#ccc");
-  svg.appendChild(yAxis);
-
-  const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  tooltip.setAttribute("id", "tooltip");
-  tooltip.setAttribute("visibility", "hidden");
-  tooltip.setAttribute("font-size", "12");
-  tooltip.setAttribute("font-family", "Arial, sans-serif");
-  tooltip.setAttribute("fill", "black");
-  svg.appendChild(tooltip);
-
-  skills.forEach((t, i) => {
-    const barHeight = (t.amount / maxAmount) * (height - 2 * padding);
-    const x = padding + i * barWidth;
-    const y = height - padding - barHeight;
-
-    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    rect.setAttribute("x", x);
-    rect.setAttribute("y", y);
-    rect.setAttribute("width", barWidth * 0.8);
-    rect.setAttribute("height", barHeight);
-    rect.setAttribute("fill", "#3b82f6");
-
-
-    rect.addEventListener("mouseover", () => {
-      tooltip.setAttribute("x", x + 5);
-      tooltip.setAttribute("y", y - 10);
-      tooltip.textContent = `${t.type} - ${t.amount}`;
-      tooltip.setAttribute("visibility", "visible");
-    });
-
-    rect.addEventListener("mouseout", () => {
-      tooltip.setAttribute("visibility", "hidden");
-    });
-
-    svg.appendChild(rect);
-  });
-}
-
 export function displayProjects(projects) {
   const svg = document.getElementById("chart");
 
@@ -196,5 +123,77 @@ export function displayProjects(projects) {
   polyline.setAttribute("stroke", "#333");
   polyline.setAttribute("stroke-width", 2);
   svg.appendChild(polyline);
+}
 
+export function displaySkills(skills) {
+  let visitedSkill = {}
+  let filterSkills = []
+  skills.forEach(value => {
+    if (!visitedSkill[value.type]) {
+      visitedSkill[value.type] = true
+      filterSkills.push(value)
+    }
+  })
+
+  skills = filterSkills
+
+  const svg = document.getElementById("skills-chart");
+
+  const width = 800;
+  const height = 400;
+  const padding = 50;
+
+  const maxAmount = 100;
+  const barWidth = (width - 2 * padding) / skills.length;
+
+  const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  xAxis.setAttribute("x1", padding);
+  xAxis.setAttribute("y1", height - padding);
+  xAxis.setAttribute("x2", width - padding);
+  xAxis.setAttribute("y2", height - padding);
+  xAxis.setAttribute("stroke", "#ccc");
+  svg.appendChild(xAxis);
+
+  const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  yAxis.setAttribute("x1", padding);
+  yAxis.setAttribute("y1", padding);
+  yAxis.setAttribute("x2", padding);
+  yAxis.setAttribute("y2", height - padding);
+  yAxis.setAttribute("stroke", "#ccc");
+  svg.appendChild(yAxis);
+
+  const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  tooltip.setAttribute("id", "tooltip");
+  tooltip.setAttribute("visibility", "hidden");
+  tooltip.setAttribute("font-size", "12");
+  tooltip.setAttribute("font-family", "Arial, sans-serif");
+  tooltip.setAttribute("fill", "black");
+  svg.appendChild(tooltip);
+
+  skills.forEach((t, i) => {
+    const barHeight = (t.amount / maxAmount) * (height - 2 * padding);
+    const x = padding + i * barWidth;
+    const y = height - padding - barHeight;
+
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", barWidth * 0.8);
+    rect.setAttribute("height", barHeight);
+    rect.setAttribute("fill", "#3b82f6");
+
+
+    rect.addEventListener("mouseover", () => {
+      tooltip.setAttribute("x", x + 5);
+      tooltip.setAttribute("y", y - 10);
+      tooltip.textContent = `${t.type} - ${t.amount}`;
+      tooltip.setAttribute("visibility", "visible");
+    });
+
+    rect.addEventListener("mouseout", () => {
+      tooltip.setAttribute("visibility", "hidden");
+    });
+
+    svg.appendChild(rect);
+  });
 }
