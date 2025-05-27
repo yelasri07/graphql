@@ -1,6 +1,6 @@
 import { convertXPToReadable } from "../utils/convert.js";
 
-export function displayProjects(projects, totalXP) {
+export function displayProjects(projects) {
   const svg = document.getElementById("chart");
 
   let data = projects.map(value => {
@@ -8,6 +8,17 @@ export function displayProjects(projects, totalXP) {
       date: new Date(value.createdAt),
       amount: value.amount,
       projectName: value.object.name
+    }
+  })
+  
+  let maxValue = 0
+  let totalXP = 0
+  let accum = []
+  data.forEach(value => {
+    accum.push(value.amount)
+    maxValue = accum.reduce((accumulator, currentValue) => accumulator + currentValue)
+    if (maxValue > totalXP) {
+      totalXP = maxValue
     }
   })
 
@@ -18,7 +29,6 @@ export function displayProjects(projects, totalXP) {
   const minDate = Math.min(...data.map(t => t.date));
   const maxDate = Math.max(...data.map(t => t.date));
   const maxAmount = totalXP;
-
 
   const getX = date => {
     if (minDate === maxDate) return width / 2;
@@ -53,15 +63,12 @@ export function displayProjects(projects, totalXP) {
     const value = (maxAmount / numTicks) * i;
     const y = getY(value);
     
-    console.log(value, convertXPToReadable(value))
-
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("x", padding - 10);
     label.setAttribute("y", y + 4);
     label.setAttribute("text-anchor", "end");
     label.setAttribute("font-size", "10");
-    // label.setAttribute("font-family", "Arial, sans-serif");
-    label.textContent = Math.round(convertXPToReadable(value));
+    label.textContent = convertXPToReadable(value);
     svg.appendChild(label);
 
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -69,22 +76,21 @@ export function displayProjects(projects, totalXP) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    // line.setAttribute("stroke", "black");
+    line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
 
   const labelInterval = Math.ceil(data.length / 8);
 
-  let accum = []
+  accum = []
   data.forEach((t, i) => {
-    const cx = getX(t.date);
-
-    // console.log(t.projectName,t.amount)
     accum.push(t.amount)
+    const cx = getX(t.date);
     t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
 
-    // console.log(t.projectName, t.cy)
+    // console.log(t.projectName, t.amount)
+    // console.log(t.projectName, accum.reduce((accumulator, currentValue) => accumulator + currentValue))
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("cx", cx);
