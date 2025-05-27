@@ -1,3 +1,5 @@
+import { convertXPToReadable } from "../utils/convert.js";
+
 export function displayProjects(projects, totalXP) {
   const svg = document.getElementById("chart");
 
@@ -15,7 +17,6 @@ export function displayProjects(projects, totalXP) {
 
   const minDate = Math.min(...data.map(t => t.date));
   const maxDate = Math.max(...data.map(t => t.date));
-  // const maxAmount = Math.max(...data.map(t => t.amount));
   const maxAmount = totalXP;
 
 
@@ -51,6 +52,8 @@ export function displayProjects(projects, totalXP) {
   for (let i = 0; i <= numTicks; i++) {
     const value = (maxAmount / numTicks) * i;
     const y = getY(value);
+    
+    console.log(value, convertXPToReadable(value))
 
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("x", padding - 10);
@@ -58,7 +61,7 @@ export function displayProjects(projects, totalXP) {
     label.setAttribute("text-anchor", "end");
     label.setAttribute("font-size", "10");
     // label.setAttribute("font-family", "Arial, sans-serif");
-    label.textContent = Math.round(value);
+    label.textContent = Math.round(convertXPToReadable(value));
     svg.appendChild(label);
 
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -77,7 +80,7 @@ export function displayProjects(projects, totalXP) {
   data.forEach((t, i) => {
     const cx = getX(t.date);
 
-    console.log(t.projectName,t.amount)
+    // console.log(t.projectName,t.amount)
     accum.push(t.amount)
     t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
 
@@ -93,15 +96,15 @@ export function displayProjects(projects, totalXP) {
     const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
     tooltip.setAttribute("id", "tooltip");
     tooltip.setAttribute("visibility", "hidden");
-    tooltip.setAttribute("font-size", "5");
+    tooltip.setAttribute("font-size", "10");
     tooltip.setAttribute("font-family", "Arial, sans-serif");
     tooltip.setAttribute("fill", "black");
     svg.appendChild(tooltip);
 
     circle.addEventListener("mouseover", () => {
-      tooltip.setAttribute("x", cx + 10);
-      tooltip.setAttribute("y", t.cy - 10);
-      tooltip.textContent = `${t.projectName}`;
+      tooltip.setAttribute("x", padding + 50);
+      tooltip.setAttribute("y", padding + 10);
+      tooltip.innerHTML = `${t.projectName}`;
       tooltip.setAttribute("visibility", "visible");
     });
 
