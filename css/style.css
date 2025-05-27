@@ -148,6 +148,10 @@ text{
   fill: var(--color-text);
 }
 
+polyline{
+  stroke: var(--color-bg);
+}
+
 /* Responsive container */
 @media (min-width: 576px) {
   .container {

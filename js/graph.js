@@ -1,6 +1,7 @@
-export function displayProjects(projects) {
+export function displayProjects(projects, totalXP) {
   const svg = document.getElementById("chart");
 
+  console.log(totalXP)
 
   let data = projects.map(value => {
     return {
@@ -16,7 +17,9 @@ export function displayProjects(projects) {
 
   const minDate = Math.min(...data.map(t => t.date));
   const maxDate = Math.max(...data.map(t => t.date));
-  const maxAmount = Math.max(...data.map(t => t.amount));
+  // const maxAmount = Math.max(...data.map(t => t.amount));
+  const maxAmount = totalXP;
+
 
   const getX = date => {
     if (minDate === maxDate) return width / 2;
@@ -65,7 +68,7 @@ export function displayProjects(projects) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    // line.setAttribute("stroke", "black");
+    line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
@@ -120,10 +123,11 @@ export function displayProjects(projects) {
   const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
   polyline.setAttribute("points", points);
   polyline.setAttribute("fill", "none");
-  polyline.setAttribute("stroke", "#333");
   polyline.setAttribute("stroke-width", 2);
   svg.appendChild(polyline);
 }
+
+
 
 export function displaySkills(skills) {
   let visitedSkill = {}
