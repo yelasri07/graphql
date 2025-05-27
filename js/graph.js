@@ -66,7 +66,7 @@ export function displayProjects(projects, totalXP) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    line.setAttribute("stroke", "black");
+    // line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
