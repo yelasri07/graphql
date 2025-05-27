@@ -76,8 +76,12 @@ export function displayProjects(projects, totalXP) {
   let accum = []
   data.forEach((t, i) => {
     const cx = getX(t.date);
+
+    console.log(t.projectName,t.amount)
     accum.push(t.amount)
     t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
+
+    // console.log(t.projectName, t.cy)
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("cx", cx);
@@ -89,7 +93,7 @@ export function displayProjects(projects, totalXP) {
     const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
     tooltip.setAttribute("id", "tooltip");
     tooltip.setAttribute("visibility", "hidden");
-    tooltip.setAttribute("font-size", "10");
+    tooltip.setAttribute("font-size", "5");
     tooltip.setAttribute("font-family", "Arial, sans-serif");
     tooltip.setAttribute("fill", "black");
     svg.appendChild(tooltip);

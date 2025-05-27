@@ -65,11 +65,13 @@ const query = `
     }
   }
 
-    projects: transaction (where: {_and: [
+     projects: transaction (where: {_and: [
     {type: {_eq: "xp"}},
     {event:{object:{name:{_eq:"Module"}}}}
     {object: {type: {_eq: "project"}}}
-  ]}) {
+  ]}
+    order_by: {createdAt: asc}
+    ) {
     type
       object {
         name
