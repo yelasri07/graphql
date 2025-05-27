@@ -28,7 +28,6 @@ export function displayProjects(projects) {
 
   const minDate = Math.min(...data.map(t => t.date));
   const maxDate = Math.max(...data.map(t => t.date));
-  const maxAmount = totalXP;
 
   const getX = date => {
     if (minDate === maxDate) return width / 2;
@@ -36,8 +35,8 @@ export function displayProjects(projects) {
   };
 
   const getY = amount => {
-    if (maxAmount === 0) return height - padding;
-    return height - padding - (amount / maxAmount) * (height - 2 * padding);
+    if (totalXP === 0) return height - padding;
+    return height - padding - (amount / totalXP) * (height - 2 * padding);
   };
 
   const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -60,7 +59,7 @@ export function displayProjects(projects) {
 
   const numTicks = 10;
   for (let i = 0; i <= numTicks; i++) {
-    const value = (maxAmount / numTicks) * i;
+    const value = (totalXP / numTicks) * i;
     const y = getY(value);
     
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -76,7 +75,7 @@ export function displayProjects(projects) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    line.setAttribute("stroke", "black");
+    // line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
@@ -160,7 +159,7 @@ export function displaySkills(skills) {
   const height = 400;
   const padding = 50;
 
-  const maxAmount = 100;
+  const totalXP = 100;
   const barWidth = (width - 2 * padding) / skills.length;
 
   const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -188,7 +187,7 @@ export function displaySkills(skills) {
   svg.appendChild(tooltip);
 
   skills.forEach((t, i) => {
-    const barHeight = (t.amount / maxAmount) * (height - 2 * padding);
+    const barHeight = (t.amount / totalXP) * (height - 2 * padding);
     const x = padding + i * barWidth;
     const y = height - padding - barHeight;
 

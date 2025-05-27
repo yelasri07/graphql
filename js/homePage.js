@@ -50,7 +50,7 @@ export async function homePage() {
         </main>
     `
 
-    displayProjects(projects, userTotalXp.amount)
+    displayProjects(projects)
     displaySkills(skills)
     logout()
 }
