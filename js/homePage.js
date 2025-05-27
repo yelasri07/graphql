@@ -31,7 +31,7 @@ export async function homePage() {
     document.body.innerHTML = /*html*/`
         ${header()}
         <main class="container">
-            <section style="display:none;" class="infos">
+            <section class="infos">
                 <div class="profile">
                     <h2>${userInfos.login}</h2>
                     <h2>${userInfos.email}</h2>
@@ -44,7 +44,7 @@ export async function homePage() {
             <section class="projects">
                 <svg id="chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
             </section>
-            <section style="display:none;" class="skills">
+            <section class="skills">
                 <svg id="skills-chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
             </section>
         </main>

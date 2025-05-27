@@ -1,8 +1,6 @@
 export function displayProjects(projects, totalXP) {
   const svg = document.getElementById("chart");
 
-  console.log(totalXP)
-
   let data = projects.map(value => {
     return {
       date: new Date(value.createdAt),
@@ -75,13 +73,15 @@ export function displayProjects(projects, totalXP) {
 
   const labelInterval = Math.ceil(data.length / 8);
 
+  let accum = []
   data.forEach((t, i) => {
     const cx = getX(t.date);
-    const cy = getY(t.amount);
+    accum.push(t.amount)
+    t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("cx", cx);
-    circle.setAttribute("cy", cy);
+    circle.setAttribute("cy", t.cy);
     circle.setAttribute("r", 4);
     circle.setAttribute("fill", "#dc2626");
     svg.appendChild(circle);
@@ -96,7 +96,7 @@ export function displayProjects(projects, totalXP) {
 
     circle.addEventListener("mouseover", () => {
       tooltip.setAttribute("x", cx + 10);
-      tooltip.setAttribute("y", cy - 10);
+      tooltip.setAttribute("y", t.cy - 10);
       tooltip.textContent = `${t.projectName}`;
       tooltip.setAttribute("visibility", "visible");
     });
@@ -119,7 +119,7 @@ export function displayProjects(projects, totalXP) {
     }
   });
 
-  const points = data.map(t => `${getX(t.date)},${getY(t.amount)}`).join(" ");
+  const points = data.map(t => `${getX(t.date)},${t.cy}`).join(" ");
   const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
   polyline.setAttribute("points", points);
   polyline.setAttribute("fill", "none");
