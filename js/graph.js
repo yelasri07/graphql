@@ -75,7 +75,7 @@ export function displayProjects(projects) {
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    // line.setAttribute("stroke", "black");
+    line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
@@ -88,7 +88,6 @@ export function displayProjects(projects) {
     const cx = getX(t.date);
     t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
 
-    // console.log(t.projectName, t.amount)
     // console.log(t.projectName, accum.reduce((accumulator, currentValue) => accumulator + currentValue))
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
