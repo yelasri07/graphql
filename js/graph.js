@@ -106,7 +106,7 @@ export function displayProjects(projects) {
     const circle = document.createElementNS(SVG, "circle");
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", t.cy);
-    circle.setAttribute("r", 4);
+    circle.setAttribute("r", 2);
     svg.appendChild(circle);
 
     circle.addEventListener("mouseover", e => {
@@ -118,10 +118,12 @@ export function displayProjects(projects) {
           <p>3 May</p>
           <p>Valid</p>
       `
+      circle.setAttribute("r", 6)
     });
 
     circle.addEventListener("mouseout", e => {
       detailsElement.style.display = 'none'
+      circle.setAttribute("r", 2)
     });
 
 

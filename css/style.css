@@ -149,7 +149,9 @@ svg {
 }
 
 circle{
-  fill: #1f77b4;
+  fill: var(--color-accent);
+  cursor: pointer;
+  transition: .2s;
 }
 
 text{
@@ -157,7 +159,7 @@ text{
 }
 
 polyline{
-  stroke: var(--color-bg);
+  stroke: var(--color-primary);
 }
 
 /* Responsive container */
