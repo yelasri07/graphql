@@ -1,5 +1,7 @@
 import { convertXPToReadable } from "../utils/convert.js";
 
+const SVG = "http://www.w3.org/2000/svg"
+
 export function displayProjects(projects) {
   const svg = document.getElementById("chart");
 
@@ -10,7 +12,7 @@ export function displayProjects(projects) {
       projectName: value.object.name
     }
   })
-  
+
   let maxValue = 0
   let totalXP = 0
   let accum = []
@@ -39,7 +41,7 @@ export function displayProjects(projects) {
     return height - padding - (amount / totalXP) * (height - 2 * padding);
   };
 
-  const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  const yAxis = document.createElementNS(SVG, "line");
   yAxis.setAttribute("x1", padding);
   yAxis.setAttribute("y1", padding);
   yAxis.setAttribute("x2", padding);
@@ -48,7 +50,7 @@ export function displayProjects(projects) {
   yAxis.setAttribute("stroke-width", 2);
   svg.appendChild(yAxis);
 
-  const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  const xAxis = document.createElementNS(SVG, "line");
   xAxis.setAttribute("x1", padding);
   xAxis.setAttribute("y1", height - padding);
   xAxis.setAttribute("x2", width - padding);
@@ -61,8 +63,8 @@ export function displayProjects(projects) {
   for (let i = 0; i <= numTicks; i++) {
     const value = (totalXP / numTicks) * i;
     const y = getY(value);
-    
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+    const label = document.createElementNS(SVG, "text");
     label.setAttribute("x", padding - 10);
     label.setAttribute("y", y + 4);
     label.setAttribute("text-anchor", "end");
@@ -70,12 +72,12 @@ export function displayProjects(projects) {
     label.textContent = convertXPToReadable(value);
     svg.appendChild(label);
 
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    const line = document.createElementNS(SVG, "line");
     line.setAttribute("x1", padding);
     line.setAttribute("y1", y);
     line.setAttribute("x2", width - padding);
     line.setAttribute("y2", y);
-    line.setAttribute("stroke", "black");
+    // line.setAttribute("stroke", "black");
     line.setAttribute("stroke-dasharray", "1");
     svg.appendChild(line);
   }
@@ -84,20 +86,30 @@ export function displayProjects(projects) {
 
   accum = []
   data.forEach((t, i) => {
-    accum.push(t.amount)
+    accum.push(t.amount);
+    t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))
+  });
+
+  const points = data.map(t => `${getX(t.date)},${t.cy}`).join(" ");
+  const polyline = document.createElementNS(SVG, "polyline");
+  polyline.setAttribute("points", points);
+  polyline.setAttribute("fill", "none");
+  polyline.setAttribute("stroke-width", 2);
+  svg.appendChild(polyline);
+
+  data.forEach((t, i) => {
     const cx = getX(t.date);
-    t.cy = getY(accum.reduce((accumulator, currentValue) => accumulator + currentValue))  
 
     // console.log(t.projectName, accum.reduce((accumulator, currentValue) => accumulator + currentValue))
 
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const circle = document.createElementNS(SVG, "circle");
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", t.cy);
     circle.setAttribute("r", 4);
     circle.setAttribute("fill", "#dc2626");
     svg.appendChild(circle);
 
-    const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    const tooltip = document.createElementNS(SVG, "text");
     tooltip.setAttribute("id", "tooltip");
     tooltip.setAttribute("visibility", "hidden");
     tooltip.setAttribute("font-size", "10");
@@ -118,7 +130,7 @@ export function displayProjects(projects) {
 
 
     if (i % labelInterval === 0) {
-      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      const text = document.createElementNS(SVG, "text");
       text.setAttribute("x", cx);
       text.setAttribute("y", height - padding + 25);
       text.setAttribute("text-anchor", "end");
@@ -129,13 +141,6 @@ export function displayProjects(projects) {
       svg.appendChild(text);
     }
   });
-
-  const points = data.map(t => `${getX(t.date)},${t.cy}`).join(" ");
-  const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  polyline.setAttribute("points", points);
-  polyline.setAttribute("fill", "none");
-  polyline.setAttribute("stroke-width", 2);
-  svg.appendChild(polyline);
 }
 
 
@@ -161,7 +166,7 @@ export function displaySkills(skills) {
   const totalXP = 100;
   const barWidth = (width - 2 * padding) / skills.length;
 
-  const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  const xAxis = document.createElementNS(SVG, "line");
   xAxis.setAttribute("x1", padding);
   xAxis.setAttribute("y1", height - padding);
   xAxis.setAttribute("x2", width - padding);
@@ -169,7 +174,7 @@ export function displaySkills(skills) {
   xAxis.setAttribute("stroke", "#ccc");
   svg.appendChild(xAxis);
 
-  const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  const yAxis = document.createElementNS(SVG, "line");
   yAxis.setAttribute("x1", padding);
   yAxis.setAttribute("y1", padding);
   yAxis.setAttribute("x2", padding);
@@ -177,7 +182,7 @@ export function displaySkills(skills) {
   yAxis.setAttribute("stroke", "#ccc");
   svg.appendChild(yAxis);
 
-  const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  const tooltip = document.createElementNS(SVG, "text");
   tooltip.setAttribute("id", "tooltip");
   tooltip.setAttribute("visibility", "hidden");
   tooltip.setAttribute("font-size", "12");
@@ -190,7 +195,7 @@ export function displaySkills(skills) {
     const x = padding + i * barWidth;
     const y = height - padding - barHeight;
 
-    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const rect = document.createElementNS(SVG, "rect");
     rect.setAttribute("x", x);
     rect.setAttribute("y", y);
     rect.setAttribute("width", barWidth * 0.8);
