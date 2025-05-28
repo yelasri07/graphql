@@ -113,11 +113,46 @@ section.infos {
   align-items: center;
 }
 
+.imgProfile{
+  width: 45px;
+  border-radius: 50%;
+}
+
+.profile div:first-child{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.profile div:first-child h2{
+  font-size: 20px;
+}
+
+.profile p{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile p i {
+  color: var(--color-accent);
+}
+
+.firstLastName{
+  background-color: var(--color-bg);
+  width: max-content;
+  padding: 4px 8px;
+  font-size: 14px;
+  margin-top: -2px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
 .infos .profile{
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .infos .level,.infos .xp, .infos .ratio {
@@ -144,6 +179,21 @@ section.infos {
   padding: 10px 20px;
   border-radius: 8px;
   display: none;
+  max-width: 250px;
+}
+
+.projects h3{
+  font-size: 15px;
+}
+
+.projects p.date{
+  font-size: 14px;
+}
+
+.projects p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .succeeded{

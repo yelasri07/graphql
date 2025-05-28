@@ -37,6 +37,7 @@ const query = `
       firstName
       lastName
       auditRatio
+      attrs
     }
   
   level: transaction (where : {_and :[

@@ -33,9 +33,14 @@ export async function homePage() {
         <main class="container">
             <section class="infos">
                 <div class="profile">
-                    <h2>${userInfos.login}</h2>
-                    <h2>${userInfos.email}</h2>
-                    <h2>${userInfos.firstName} ${userInfos.lastName}</h2>
+                    <div>
+                        <img class="imgProfile" src="https://discord.zone01oujda.ma/assets/pictures/${userInfos.login}.jpg">
+                        <h2>${userInfos.login}</h2>
+                    </div>
+                    <p class="firstLastName">${userInfos.firstName} ${userInfos.lastName}</p>
+                    <p><i class="fa-solid fa-envelope"></i> ${userInfos.email}</p>
+                    <p><i class="fa-solid fa-phone"></i> ${userInfos.attrs.tel}</p>
+                    <p><i class="fa-solid fa-city"></i> ${userInfos.attrs.city}</p>
                 </div>
                 <div class="level"><span>Level</span> ${userLevel.amount}</div>
                 <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>

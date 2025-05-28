@@ -1,3 +1,4 @@
+import { capitalize } from "../utils/capitalize.js";
 import { convertXPToReadable } from "../utils/convert.js";
 
 const SVG = "http://www.w3.org/2000/svg"
@@ -103,8 +104,6 @@ export function displayProjects(projects) {
   data.forEach((t, i) => {
     const cx = getX(t.date);
 
-    // console.log(t.projectName, accum.reduce((accumulator, currentValue) => accumulator + currentValue))
-
     const circle = document.createElementNS(SVG, "circle");
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", t.cy);
@@ -112,22 +111,23 @@ export function displayProjects(projects) {
     svg.appendChild(circle);
 
     circle.addEventListener("mouseover", e => {
-      detailsElement.style.top = e.pageY + 10 + 'px'
-      detailsElement.style.left = e.pageX + 10 + 'px'
       detailsElement.style.display = 'block'
       let status = /*html*/`
         <p class="succeeded"><i class="fa-solid fa-circle-check"></i> succeeded</p>
-      `
+        `
       if (t.invalidatedAt) {
         status = /*html*/`
           <p class="invalidated"><i class="fa-solid fa-circle-xmark"></i> INVALIDATED</p>
-        `
+          `
       }
+      
       detailsElement.innerHTML = /*html*/`
-         <h3>${t.projectName}</h3>
-          <p>${t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: "numeric" })}</p>
-          ${status}
-      `
+         <h3>${capitalize(t.projectName)}</h3>
+         <p class="date">${t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: "numeric" })}</p>
+         ${status}
+         `
+      detailsElement.style.top = e.pageY - 10 - detailsElement.getBoundingClientRect().height + 'px'
+      detailsElement.style.left = e.pageX - 10 - detailsElement.getBoundingClientRect().width + 'px'
       circle.setAttribute("r", 5)
     });
 
