@@ -136,6 +136,14 @@ section.infos {
   width: 100%;
 }
 
+.projects .details{
+  background-color: var(--color-bg);
+  position: absolute;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: none;
+}
+
 svg {
   border-radius: 8px;
 }

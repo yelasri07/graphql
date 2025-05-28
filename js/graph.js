@@ -4,6 +4,7 @@ const SVG = "http://www.w3.org/2000/svg"
 
 export function displayProjects(projects) {
   const svg = document.getElementById("chart");
+  let detailsElement = document.querySelector('.details')
 
   let data = projects.map(value => {
     return {
@@ -106,26 +107,21 @@ export function displayProjects(projects) {
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", t.cy);
     circle.setAttribute("r", 4);
-    circle.setAttribute("fill", "#dc2626");
     svg.appendChild(circle);
 
-    const tooltip = document.createElementNS(SVG, "text");
-    tooltip.setAttribute("id", "tooltip");
-    tooltip.setAttribute("visibility", "hidden");
-    tooltip.setAttribute("font-size", "10");
-    tooltip.setAttribute("font-family", "Arial, sans-serif");
-    tooltip.setAttribute("fill", "black");
-    svg.appendChild(tooltip);
-
-    circle.addEventListener("mouseover", () => {
-      tooltip.setAttribute("x", padding + 50);
-      tooltip.setAttribute("y", padding + 10);
-      tooltip.innerHTML = `${t.projectName}`;
-      tooltip.setAttribute("visibility", "visible");
+    circle.addEventListener("mouseover", e => {
+      detailsElement.style.top = e.pageY + 10 + 'px'
+      detailsElement.style.left = e.pageX + 10 + 'px'
+      detailsElement.style.display = 'block'
+      detailsElement.innerHTML = /*html*/`
+         <h3>${t.projectName}</h3>
+          <p>3 May</p>
+          <p>Valid</p>
+      `
     });
 
-    circle.addEventListener("mouseout", () => {
-      tooltip.setAttribute("visibility", "hidden");
+    circle.addEventListener("mouseout", e => {
+      detailsElement.style.display = 'none'
     });
 
 
