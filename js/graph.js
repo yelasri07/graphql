@@ -10,7 +10,9 @@ export function displayProjects(projects) {
     return {
       date: new Date(value.createdAt),
       amount: value.amount,
-      projectName: value.object.name
+      projectName: value.object.name,
+      invalidatedAt: value.invalidatedAt,
+      invalidationReason: value.invalidationReason
     }
   })
 
@@ -113,29 +115,37 @@ export function displayProjects(projects) {
       detailsElement.style.top = e.pageY + 10 + 'px'
       detailsElement.style.left = e.pageX + 10 + 'px'
       detailsElement.style.display = 'block'
+      let status = /*html*/`
+        <p class="succeeded"><i class="fa-solid fa-circle-check"></i> succeeded</p>
+      `
+      if (t.invalidatedAt) {
+        status = /*html*/`
+          <p class="invalidated"><i class="fa-solid fa-circle-xmark"></i> INVALIDATED</p>
+        `
+      }
       detailsElement.innerHTML = /*html*/`
          <h3>${t.projectName}</h3>
-          <p>3 May</p>
-          <p>Valid</p>
+          <p>${t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: "numeric" })}</p>
+          ${status}
       `
-      circle.setAttribute("r", 6)
+      circle.setAttribute("r", 5)
     });
 
-    circle.addEventListener("mouseout", e => {
+    circle.addEventListener("mouseout", () => {
       detailsElement.style.display = 'none'
       circle.setAttribute("r", 2)
     });
 
 
     if (i % labelInterval === 0) {
-      const text = document.createElementNS(SVG, "text");
-      text.setAttribute("x", cx);
-      text.setAttribute("y", height - padding + 25);
-      text.setAttribute("text-anchor", "end");
-      text.setAttribute("font-size", "10");
-      text.setAttribute("transform", `rotate(-45, ${cx}, ${height - padding + 25})`);
-      text.setAttribute("font-family", "Arial, sans-serif");
-      text.textContent = t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const text = document.createElementNS(SVG, "text")
+      text.setAttribute("x", cx)
+      text.setAttribute("y", height - padding + 25)
+      text.setAttribute("text-anchor", "end")
+      text.setAttribute("font-size", "10")
+      text.setAttribute("transform", `rotate(-45, ${cx}, ${height - padding + 25})`)
+      text.setAttribute("font-family", "Arial, sans-serif")
+      text.textContent = t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
       svg.appendChild(text);
     }
   });

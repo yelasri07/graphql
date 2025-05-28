@@ -9,6 +9,8 @@
   --color-input-bg: #334155;
   --color-border: #475569;
   --color-accent: #22d3ee;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
   --box-shadow: rgba(148, 163, 184, 0.2);
 }
 
@@ -142,6 +144,14 @@ section.infos {
   padding: 10px 20px;
   border-radius: 8px;
   display: none;
+}
+
+.succeeded{
+  color: var(--color-success);
+}
+
+.invalidated{
+  color: var(--color-error);
 }
 
 svg {

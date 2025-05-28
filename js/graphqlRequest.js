@@ -80,6 +80,8 @@ const query = `
       }
     amount
     createdAt
+    invalidatedAt
+    invalidationReason
   }
 
     skills: transaction(
