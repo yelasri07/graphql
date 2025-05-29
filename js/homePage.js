@@ -17,10 +17,10 @@ function header() {
 export async function homePage() {
     let data = await fetchUserData()
     if (!data) {
+        localStorage.removeItem("Token")
         loginPage()
         return
     }
-
 
     let userInfos = data.data.user[0]
     let userLevel = data.data.level[0]

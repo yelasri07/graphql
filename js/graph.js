@@ -120,7 +120,7 @@ export function displayProjects(projects) {
           <p class="invalidated"><i class="fa-solid fa-circle-xmark"></i> INVALIDATED</p>
           `
       }
-      
+
       detailsElement.innerHTML = /*html*/`
          <h3>${capitalize(t.projectName)}</h3>
          <p class="date">${t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: "numeric" })}</p>
@@ -150,8 +150,6 @@ export function displayProjects(projects) {
     }
   });
 }
-
-
 
 export function displaySkills(skills) {
   let visitedSkill = {}
