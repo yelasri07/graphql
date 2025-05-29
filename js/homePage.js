@@ -42,9 +42,11 @@ export async function homePage() {
                     <p><i class="fa-solid fa-phone"></i> ${userInfos.attrs.tel}</p>
                     <p><i class="fa-solid fa-city"></i> ${userInfos.attrs.city}</p>
                 </div>
-                <div class="level"><span>Level</span> ${userLevel.amount}</div>
-                <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
-                <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
+                <div class="amounts">
+                    <div class="level"><span>Level</span> ${userLevel.amount}</div>
+                    <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
+                    <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
+                </div>
             </section>
             <section class="projects">
                  <div class="details"></div>

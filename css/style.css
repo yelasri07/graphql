@@ -100,35 +100,53 @@ main {
   gap: 30px;
 }
 
-section{
+section:not(section.infos) {
   background-color: var(--color-card);
   padding: 20px 40px;
   border-radius: 8px;
   color: var(--color-text);
 }
 
-section.infos {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  align-items: center;
+.profile,
+.amounts {
+  background-color: var(--color-card);
+  border-radius: 8px;
+  color: var(--color-text);
+  padding: 20px 40px;
 }
 
-.imgProfile{
+.amounts {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  width: 65%;
+}
+
+.profile {
+  width: 35%;
+}
+
+section.infos {
+  display: flex;
+  gap: 30px;
+}
+
+.imgProfile {
   width: 45px;
   border-radius: 50%;
 }
 
-.profile div:first-child{
+.profile div:first-child {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.profile div:first-child h2{
+.profile div:first-child h2 {
   font-size: 20px;
 }
 
-.profile p{
+.profile p {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -138,7 +156,7 @@ section.infos {
   color: var(--color-accent);
 }
 
-.firstLastName{
+.firstLastName {
   background-color: var(--color-bg);
   width: max-content;
   padding: 4px 8px;
@@ -148,32 +166,47 @@ section.infos {
   border-radius: 8px;
 }
 
-.infos .profile{
+.infos .profile {
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.infos .level,.infos .xp, .infos .ratio {
+.infos .level,
+.infos .xp,
+.infos .ratio {
   width: 200px;
   height: 200px;
-  background-color: var(--color-bg);
-  border-radius: 8px;
+  background: var(--color-bg);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2em;
-  border-bottom: 10px solid var(--color-accent);
-  box-shadow: 0 2px 20px var(--box-shadow);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid var(--color-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--color-text);
+  transition: transform 0.2s ease;
 }
 
-.projects{
+.infos .level:hover,
+.infos .xp:hover,
+.infos .ratio:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.3);
+}
+
+.projects {
   width: 100%;
 }
 
-.projects .details{
+.projects .details {
   background-color: var(--color-bg);
   position: absolute;
   padding: 10px 20px;
@@ -182,11 +215,11 @@ section.infos {
   max-width: 250px;
 }
 
-.projects h3{
+.projects h3 {
   font-size: 15px;
 }
 
-.projects p.date{
+.projects p.date {
   font-size: 14px;
 }
 
@@ -196,11 +229,11 @@ section.infos {
   gap: 5px;
 }
 
-.succeeded{
+.succeeded {
   color: var(--color-success);
 }
 
-.invalidated{
+.invalidated {
   color: var(--color-error);
 }
 
@@ -208,17 +241,17 @@ svg {
   border-radius: 8px;
 }
 
-circle{
+circle {
   fill: var(--color-accent);
   cursor: pointer;
   transition: .2s;
 }
 
-text{
+text {
   fill: var(--color-text);
 }
 
-polyline{
+polyline {
   stroke: var(--color-primary);
 }
 
