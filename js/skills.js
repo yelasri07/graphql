@@ -38,22 +38,27 @@ export function displaySkills(skills) {
     svg.appendChild(yAxis);
 
     const tooltip = document.createElementNS(SVG, "text");
-    tooltip.setAttribute("id", "tooltip");
     tooltip.setAttribute("visibility", "hidden");
     tooltip.setAttribute("font-size", "12");
-    tooltip.setAttribute("font-family", "Arial, sans-serif");
-    tooltip.setAttribute("fill", "black");
     svg.appendChild(tooltip);
+
+    const maxSkill = document.createElementNS(SVG, "text")
+    maxSkill.setAttribute("font-size", "12");
+    maxSkill.textContent = "qqsd"
+    maxSkill.setAttribute("x", 20);
+    maxSkill.setAttribute("y", 20);
+    svg.appendChild(maxSkill);
+
 
     skills.forEach((t, i) => {
         const barHeight = (t.amount / totalXP) * (height - 2 * padding);
         const x = padding + i * barWidth;
         const y = height - padding - barHeight;
-
+        
         const rect = document.createElementNS(SVG, "rect");
         rect.setAttribute("x", x);
         rect.setAttribute("y", y);
-        rect.setAttribute("width", barWidth * 0.8);
+        rect.setAttribute("width", barWidth * 0.98);
         rect.setAttribute("height", barHeight);
         rect.setAttribute("fill", "#3b82f6");
 

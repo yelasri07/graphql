@@ -75,15 +75,6 @@ export function displayProjectsProgress(projects) {
         label.setAttribute("font-size", "10");
         label.textContent = convertXPToReadable(value);
         svg.appendChild(label);
-
-        const line = document.createElementNS(SVG, "line");
-        line.setAttribute("x1", padding);
-        line.setAttribute("y1", y);
-        line.setAttribute("x2", width - padding);
-        line.setAttribute("y2", y);
-        // line.setAttribute("stroke", "black");
-        line.setAttribute("stroke-dasharray", "1");
-        svg.appendChild(line);
     }
 
     const labelInterval = Math.ceil(data.length / 8);
@@ -144,7 +135,6 @@ export function displayProjectsProgress(projects) {
             text.setAttribute("text-anchor", "end")
             text.setAttribute("font-size", "10")
             text.setAttribute("transform", `rotate(-45, ${cx}, ${height - padding + 25})`)
-            text.setAttribute("font-family", "Arial, sans-serif")
             text.textContent = t.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
             svg.appendChild(text);
         }

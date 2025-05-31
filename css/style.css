@@ -255,6 +255,19 @@ polyline {
   stroke: var(--color-primary);
 }
 
+rect{
+  fill: var(--color-bg);
+  /* stroke-width: 1px;
+  stroke: var(--color-border); */
+  /* rx: 10;
+  ry: 10; */
+  cursor: pointer;
+}
+
+#filled{
+  fill: var(--color-card);
+}
+
 /* Responsive container */
 @media (min-width: 576px) {
   .container {

@@ -32,7 +32,7 @@ export async function homePage() {
     document.body.innerHTML = /*html*/`
         ${header()}
         <main class="container">
-            <section class="infos">
+            <section style="display:none;" class="infos">
                 <div class="profile">
                     <div>
                         <img class="imgProfile" src="https://discord.zone01oujda.ma/assets/pictures/${userInfos.login}.jpg">
@@ -49,7 +49,7 @@ export async function homePage() {
                     <div class="xp"><span>XP</span> ${convertXPToReadable(userTotalXp.amount)}</div>
                 </div>
             </section>
-            <section class="projects">
+            <section style="display:none; class="projects">
                  <div class="details"></div>
                 <svg id="chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;"></svg>
             </section>
