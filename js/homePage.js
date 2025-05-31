@@ -1,7 +1,8 @@
 import { convertXPToReadable } from "../utils/convert.js"
 import { loginPage, logout } from "./auth.js"
-import { displayProjects, displaySkills } from "./graph.js"
+import { displayProjectsProgress } from "./projects.js"
 import { fetchUserData } from "./graphqlRequest.js"
+import { displaySkills } from "./skills.js"
 
 function header() {
     return /*html*/`
@@ -58,7 +59,7 @@ export async function homePage() {
         </main>
     `
 
-    displayProjects(projects)
+    displayProjectsProgress(projects)
     displaySkills(skills)
     logout()
 }
