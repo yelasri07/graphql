@@ -1,6 +1,19 @@
+import { capitalize } from "../utils/capitalize.js"
+
 const SVG = "http://www.w3.org/2000/svg"
 
 export function displaySkills(skills) {
+    if (skills.length === 0) {
+        let skills = document.querySelector('.skills')
+        skills.innerHTML = /*html*/`
+             <div class="title">
+                    <h2>Skills</h2>
+             </div>
+             <p class="noData">No data</p>
+        `
+        return
+    }
+
     let visitedSkill = {}
     let filterSkills = []
     skills.forEach(value => {
@@ -43,30 +56,37 @@ export function displaySkills(skills) {
     svg.appendChild(tooltip);
 
     const maxSkill = document.createElementNS(SVG, "text")
-    maxSkill.setAttribute("font-size", "12");
-    maxSkill.textContent = "qqsd"
-    maxSkill.setAttribute("x", 20);
-    maxSkill.setAttribute("y", 20);
+    maxSkill.setAttribute("font-size", "10");
+    maxSkill.textContent = skills[0].amount + " %"
+    maxSkill.setAttribute("x", padding);
+    maxSkill.setAttribute("y", height - padding + 15);
     svg.appendChild(maxSkill);
 
+    const minSkill = document.createElementNS(SVG, "text")
+    minSkill.setAttribute("font-size", "10");
+    minSkill.textContent = skills[skills.length - 1].amount + " %"
+    minSkill.setAttribute("text-anchor", "end")
+    minSkill.setAttribute("x", width - padding);
+    minSkill.setAttribute("y", height - padding + 15);
+    svg.appendChild(minSkill);
 
     skills.forEach((t, i) => {
         const barHeight = (t.amount / totalXP) * (height - 2 * padding);
         const x = padding + i * barWidth;
         const y = height - padding - barHeight;
-        
-        const rect = document.createElementNS(SVG, "rect");
-        rect.setAttribute("x", x);
-        rect.setAttribute("y", y);
-        rect.setAttribute("width", barWidth * 0.98);
-        rect.setAttribute("height", barHeight);
-        rect.setAttribute("fill", "#3b82f6");
 
+        const rect = document.createElementNS(SVG, "rect");
+        rect.setAttribute("x", x + 1);
+        rect.setAttribute("y", y - 1);
+        rect.setAttribute("width", barWidth * 0.8);
+        rect.setAttribute("height", barHeight);
 
         rect.addEventListener("mouseover", () => {
-            tooltip.setAttribute("x", x + 5);
-            tooltip.setAttribute("y", y - 10);
-            tooltip.textContent = `${t.type} - ${t.amount}`;
+            tooltip.setAttribute("x", width / 2);
+            tooltip.setAttribute("y", height - padding + 15);
+            tooltip.setAttribute("font-size", "10");
+            tooltip.setAttribute("text-anchor", "middle")
+            tooltip.textContent = `${capitalize(t.type)} - ${t.amount} %`;
             tooltip.setAttribute("visibility", "visible");
         });
 

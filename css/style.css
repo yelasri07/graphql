@@ -113,6 +113,7 @@ section:not(section.infos) {
   border-radius: 8px;
   color: var(--color-text);
   padding: 20px 40px;
+  height: 100%;
 }
 
 .amounts {
@@ -219,11 +220,26 @@ section.infos {
   font-size: 15px;
 }
 
+section>.title {
+  text-align: center;
+}
+
+.projects h2,
+.skills h2 {
+  font-size: 20px;
+  text-align: center;
+  color: var(--color-text);
+  display: inline;
+  position: relative;
+  display: inline;
+  font-weight: 600;
+}
+
 .projects p.date {
   font-size: 14px;
 }
 
-.projects p {
+.projects p:not(p.noData) {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -235,6 +251,11 @@ section.infos {
 
 .invalidated {
   color: var(--color-error);
+}
+
+.noData{
+  text-align: center;
+  margin-top: 20px;
 }
 
 svg {
@@ -255,16 +276,21 @@ polyline {
   stroke: var(--color-primary);
 }
 
-rect{
+rect {
   fill: var(--color-bg);
-  /* stroke-width: 1px;
-  stroke: var(--color-border); */
-  /* rx: 10;
-  ry: 10; */
+  stroke-width: 1px;
+  stroke: var(--color-border);
+  rx: 4;
+  ry: 4;
   cursor: pointer;
+  transition: ease .2s;
 }
 
-#filled{
+rect:hover {
+  fill: var(--color-primary);
+}
+
+#filled {
   fill: var(--color-card);
 }
 
@@ -296,5 +322,33 @@ rect{
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;
+  }
+}
+
+@media (max-width: 1025px) {
+  section.infos {
+    gap: 10px;
+  }
+
+  .amounts {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 925px) {
+  section.infos {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .profile,
+  .amounts {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  section.infos{
+    font-size: 10px;
   }
 }

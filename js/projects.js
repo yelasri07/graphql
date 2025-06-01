@@ -4,6 +4,17 @@ import { convertXPToReadable } from "../utils/convert.js";
 const SVG = "http://www.w3.org/2000/svg"
 
 export function displayProjectsProgress(projects) {
+    if (projects.length === 0) {
+        let projects = document.querySelector('.projects')
+        projects.innerHTML = /*html*/`
+             <div class="title">
+                    <h2>Project Progress</h2>
+             </div>
+             <p class="noData">No data</p>
+        `
+        return 
+    }
+
     const svg = document.getElementById("chart");
     let detailsElement = document.querySelector('.details')
 
