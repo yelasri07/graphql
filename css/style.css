@@ -280,8 +280,8 @@ rect {
   fill: var(--color-bg);
   stroke-width: 1px;
   stroke: var(--color-border);
-  rx: 4;
-  ry: 4;
+  /* rx: 4;
+  ry: 4; */
   cursor: pointer;
   transition: ease .2s;
 }
