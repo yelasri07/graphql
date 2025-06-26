@@ -117,7 +117,7 @@ export function displayProjectsProgress(projects) {
             let status = /*html*/`
         <p class="succeeded"><i class="fa-solid fa-circle-check"></i> succeeded</p>
         `
-            if (t.invalidatedAt) {
+            if (t.amount < 0) {
                 status = /*html*/`
           <p class="invalidated"><i class="fa-solid fa-circle-xmark"></i> INVALIDATED</p>
           `

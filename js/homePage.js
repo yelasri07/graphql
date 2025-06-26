@@ -38,14 +38,14 @@ export async function homePage() {
                         <img class="imgProfile" src="/images/profile.png">
                         <h2>${userInfos.login}</h2>
                     </div>
-                    <p class="firstLastName">${userInfos.firstName} ${userInfos.lastName}</p>
-                    <p><i class="fa-solid fa-envelope"></i> ${userInfos.email}</p>
-                    <p><i class="fa-solid fa-phone"></i> ${userInfos.attrs.tel}</p>
-                    <p><i class="fa-solid fa-city"></i> ${userInfos.attrs.city}</p>
+                    <p class="firstLastName">${userInfos?.firstName } ${userInfos?.lastName}</p>
+                    <p><i class="fa-solid fa-envelope"></i> ${userInfos?.email}</p>
+                    <p><i class="fa-solid fa-phone"></i> ${userInfos?.attrs?.tel}</p>
+                    <p><i class="fa-solid fa-city"></i> ${userInfos?.attrs?.city}</p>
                 </div>
                 <div class="amounts">
                     <div class="level"><span>Level</span> ${userLevel.amount ? userLevel.amount : 0}</div>
-                    <div class="ratio"><span>Ratio</span> ${userInfos.auditRatio.toFixed(1)}</div>
+                    <div class="ratio"><span>Ratio</span> ${userInfos?.auditRatio?.toFixed(1)}</div>
                     <div class="xp"><span>XP</span> ${userTotalXp.amount ? convertXPToReadable(userTotalXp.amount) : 0}</div>
                 </div>
             </section>
